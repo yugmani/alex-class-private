@@ -1,1 +1,83 @@
-<div id="app"></div>
+<div id="app">
+  <h1>Private Class Fields and Methods in JavaScript Classes</h1>
+  <ul>
+    <li>
+      The class properties and methods in JavaScript class are by default always
+      public. i.e. they are publicly accessible and modifiable.
+    </li>
+    <li>
+      The private methods can be handy when we want to make class properties and
+      methods inaccessible from the outside of the class they are defined in.
+    </li>
+    <li>
+      <h3>Keeping Private</h3>
+      <ol>
+        <li>
+          <strong>Keeping something private</strong>, be it a property or
+          method, it should be accessible only from one place that is the class
+          in which we have defined that property or method.
+        </li>
+        <li>
+          If someone tries to access private class field/properties or methods
+          from elsewhere JavaScript should not allow it. This includes outside
+          the class in which the class field or method is defined and even any
+          instance of that class.
+        </li>
+        <li>
+          However, it is possible to access private class field from a method
+          inside the same class.
+        </li>
+        <li>
+          Syntax: To declare some class field or method as private we have to
+          prefix it with #( the hashtag symbol).
+        </li>
+      </ol>
+    </li>
+
+    <li>
+      <h3>Creating class fields and accessing them with methods</h3>
+      <ol>
+        <li>
+          Declare a private class field by adding prefix the name of the class
+          field with #. At the time of accessing that private class field, we
+          have to include the #.
+        </li>
+        <li>
+          Two options to access class fields with methods:
+          <ol style="list-style-type: lower-alpha">
+            <li>
+              Create new instance of that class and access the property on that
+              instance. And
+            </li>
+            <li>
+              Declare that property as a static property. In this case, we don't
+              need to instantiate the class to access the property.
+            </li>
+          </ol>
+        </li>
+        <li>
+          Private class fields are designed to be inaccessible from the outside.
+          To overcome from this, create a new method and return the private
+          class field from that method. We can define this method either as
+          public or static.
+        </li>
+        <li>
+          Same as with static properties, we can call static methods without
+          instantiating the class. If the method is declared as public, we have
+          to instantiate the class. And then we will be able to call that method
+          on your new instance and get the value of private field.
+        </li>
+      </ol>
+    </li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <p>
+    <a
+      href="https://blog.alexdevero.com/javascript-private-class-fields-methods/"
+      >javascript-private-class-fields-method by Alex Devero</a
+    >
+  </p>
+</div>
