@@ -48,18 +48,22 @@ class MyPrivate {
   }
 
   // define public method to update the private field
-  updateMyPrivateAge(val) {
+  updateMyPrivateAge(age) {
     //update the value of #myPrivateAge
-    this.#myPrivateAge = val;
+    this.#myPrivateAge = age;
   }
 }
 
 //create instance of MyPrivate class
-const newInstance = new MyPrivate();
+const ageInstance = new MyPrivate();
 
 try {
   // try to call MyPrivate() on myInstance
-  console.log(newInstance.updateMyPrivateAge(33));
+  ageInstance.updateMyPrivateAge(33);
+
+  // try to access the private field directly
+  console.log(ageInstance.returnMyPrivateAge());
+  //output: 33
 } catch (error) {
   //log any error
   console.log(error);
