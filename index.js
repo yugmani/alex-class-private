@@ -22,11 +22,44 @@ const myInstance = new PrivateField();
 
 try {
   //try to call privateMethod() on myInstance
-  myInstance.privateMethod();
+  console.log(myInstance.privateMethod()); //I am private.
 
   // try to access the private field directly
   // myInstance.#myPrivateField
   //Error: Private field '#myPrivateField' must be declared in an enclosing class
+} catch (error) {
+  //log any error
+  console.log(error);
+}
+
+// ********************************************
+// Updating private class fields with methods
+// *********************************************
+
+//create a new calss
+class MyPrivate {
+  //declare private class field
+  #myPrivateAge;
+
+  // define public method to return the private field
+  returnMyPrivateAge() {
+    //return the value of #myPrivateAge
+    return this.#myPrivateAge;
+  }
+
+  // define public method to update the private field
+  updateMyPrivateAge(val) {
+    //update the value of #myPrivateAge
+    this.#myPrivateAge = val;
+  }
+}
+
+//create instance of MyPrivate class
+const newInstance = new MyPrivate();
+
+try {
+  // try to call MyPrivate() on myInstance
+  console.log(newInstance.updateMyPrivateAge(33));
 } catch (error) {
   //log any error
   console.log(error);
