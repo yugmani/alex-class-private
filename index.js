@@ -61,10 +61,56 @@ try {
   // try to call MyPrivate() on myInstance
   ageInstance.updateMyPrivateAge(33);
 
+  //let's try to update directly to the class field
+  // ageInstance.#myPrivateAge = 22;
+  // Error: Private field '#myPrivateAge' must be declared in an enclosing class
+
   // try to access the private field directly
   console.log(ageInstance.returnMyPrivateAge());
-  //output: 33
+  //output: 33      (logs updated data)
 } catch (error) {
   //log any error
+  console.log(error);
+}
+
+// *************************************************
+//Setters and getters and private class fields
+// *************************************************
+
+//create new class
+class GlassClass {
+  //declare private class field
+  #myGlassField;
+
+  //define setter method for the private field
+  set myPrivateFieldSetter(value) {
+    //set the value of myGlassField
+    this.#myGlassField = value;
+  }
+
+  //define getter method for the private field
+  get myPrivateFieldGetter() {
+    //return the value of #myGlassField
+    return this.#myGlassField;
+  }
+}
+
+//create instance of GlassClass
+const myGlass = new GlassClass();
+
+try {
+  //try to change the value of
+  // myGlass.#myGlassField = 'Hi';
+  // Error: Private field '#myGlassField' must be declared in an enclosing class
+
+  //try to access the private field directly
+  // myGlass.#myGlassField;
+  // Error: Private field '#myGlassField' must be declared in an enclosing class
+
+  //use setter to update the class field
+  myGlass.myPrivateFieldSetter = 'hi';
+  //use getter to access the class field
+  console.log(myGlass.myPrivateFieldGetter); //hi
+} catch (error) {
   console.log(error);
 }
