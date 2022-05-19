@@ -114,3 +114,37 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+// ************************************************
+// Private static class fields
+// ************************************************
+
+class PrivateStatic {
+  //declare private class field as static
+  static #myPrivateStaticField;
+
+  //define public method
+  static myPublicMethod() {
+    //return the value of #myPrivateStaticField
+    return this.#myPrivateStaticField;
+  }
+
+  static updatePublicMethod() {
+    //update the static private class field
+    this.#myPrivateStaticField = 'I am Private Static.';
+  }
+}
+
+try {
+  //try to update myPrivateStaticField on PrivateStatic class
+  PrivateStatic.updatePublicMethod();
+
+  //try to access the private field directly;
+  // PrivateStatic.#myPrivateStaticField;
+  // Error: Private field '#myPrivateStaticField' must be declared in an enclosing class
+
+  console.log(PrivateStatic.myPublicMethod());
+  // I am Private Static.
+} catch (error) {
+  console.log(error);
+}

@@ -97,7 +97,25 @@
         </li>
       </ol>
     </li>
-    <li></li>
+    <li>
+      <h3>Private Static Class Fields</h3>
+      <ol>
+        <li>
+          Accessing private class field with static method is more complicated.
+        </li>
+        <li>
+          Public class fields and methods are accessible only through class
+          instances. They are not accessible through the classes themselves. So,
+          if you create a static method to access private class field,
+          JavaScript will throw error.
+        </li>
+        <li>
+          One way to overcome from this problem is to declare the private field
+          as static as well. Now, you can access the static private class field
+          through a static method without instantiating the class.
+        </li>
+      </ol>
+    </li>
     <li></li>
   </ul>
   <p>
