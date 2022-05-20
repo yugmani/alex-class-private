@@ -148,3 +148,57 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+// *************************************************
+// Private Class Fields and Subclasses
+// *************************************************
+
+class ParentClass {
+  //declare private class field as static
+  static #parentPrivateField;
+
+  //define static method that returns the private field
+  static parentMethod() {
+    //return the value of #parentPrivateField
+    return this.#parentPrivateField;
+  }
+
+  static updateParentPrivateField(val) {
+    this.#parentPrivateField = 'I am private and parent.';
+  }
+}
+
+//create new subclass of ParentClass
+class ChildClass extends ParentClass {}
+
+try {
+  ParentClass.updateParentPrivateField();
+
+  console.log(ParentClass.parentMethod());
+  //I am private and parent.
+
+  //try to call ParentClass() on childClass
+  console.log(ChildClass.parentMethod());
+
+  //Try to access the private field directly on childClass
+  //This doesn't work
+  // ChildClass.#parentPrivateField;
+  // boot:6
+  // Error: Private field '#parentPrivateField' must be declared in an enclosing class
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  //call parentMethod on ParentClass
+  console.log(ParentClass.parentMethod());
+  //I am private and parent.
+
+  //Try to access the private field directly on ParentClass
+  //This never work
+  // ParentClass.#parentPrivateField;
+  // boot:6
+  // Error: Private field '#parentPrivateField' must be declared in an enclosing class
+} catch (error) {
+  console.log(error);
+}
