@@ -179,6 +179,7 @@ try {
 
   //try to call ParentClass() on childClass
   console.log(ChildClass.parentMethod());
+  //TypeError {}
 
   //Try to access the private field directly on childClass
   //This doesn't work
