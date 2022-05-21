@@ -203,3 +203,38 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+// ************************************************
+// *************** Private Methods ****************
+// ************************************************
+
+class PrivateMethodClass {
+  //declare private class field
+  #newPrivateField = 'I am new private.';
+
+  //define private method that returns the private field
+  #newPrivateMethod() {
+    //return the value of #newPrivateField
+    return this.#newPrivateField;
+  }
+
+  //define public method that returns the private method
+  newPublicMethod() {
+    return this.#newPrivateMethod();
+  }
+}
+
+// create new instance of PrivateMethod
+const newInstance = new PrivateMethodClass();
+
+try {
+  //call newPublicMethod of PrivateMethodClass
+  console.log(newInstance.newPublicMethod());
+  // I am new private.
+
+  //try to access the private field directly on newInstance
+  PrivateMethodClass.#newPrivateMethod();
+  // Error: Private field '#newPrivateMethod' must be declared in an enclosing class
+} catch (error) {
+  console.log(error);
+}
