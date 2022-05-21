@@ -233,8 +233,50 @@ try {
   // I am new private.
 
   //try to access the private field directly on newInstance
-  PrivateMethodClass.#newPrivateMethod();
+  // PrivateMethodClass.#newPrivateMethod();
   // Error: Private field '#newPrivateMethod' must be declared in an enclosing class
+} catch (error) {
+  console.log(error);
+}
+
+// **************************************************
+// ************* Private Static Methods *************
+// **************************************************
+
+class StaticMethodClass {
+  //declare static private class field
+  static #newStaticPrivateField;
+
+  //define static private method that returns the private field
+  static #newStaticPrivateMethod() {
+    return this.#newStaticPrivateField;
+  }
+
+  static updateStaticMethod() {
+    this.#newStaticPrivateField = 'I am new Static Private Field';
+  }
+  //define static public method that calls the static private method
+  static newStaticPublicMethod() {
+    return this.#newStaticPrivateMethod();
+  }
+}
+
+//no need of creating new instance
+//but here is an instance to update the value of static #newStaticPrivateField
+const newStaticMethodInstance = new StaticMethodClass();
+
+try {
+  //update class field #newStaticPrivateField;
+  StaticMethodClass.updateStaticMethod();
+
+  //call public method to access static private class field
+  console.log(StaticMethodClass.newStaticPublicMethod());
+  // I am new Static Private Field
+
+  //try to accesss the private field directly on StaticMethodClass
+  // StaticMethodClass.#newStaticPrivateMethod()
+  // boot:6
+  // Error: Private field '#newStaticPrivateMethod' must be declared in an enclosing class
 } catch (error) {
   console.log(error);
 }
